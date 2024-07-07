@@ -8,7 +8,6 @@ from mutagen.id3 import ID3, ID3NoHeaderError
 from mutagen.oggvorbis import OggVorbis
 from pydub import AudioSegment
 
-
 # Find .mp3, .wav, .flac, .ogg files in the given directory
 def find_audio_files(directory):
     audio_files = []
@@ -35,7 +34,7 @@ def find_ogg_files(directory):
                 ogg_files.append(full_path)
 
     if len(ogg_files) > 0:
-        sort_ogg_files_by_track_number(ogg_files)
+        ogg_files = sort_ogg_files_by_track_number(ogg_files)
 
     return ogg_files
 
@@ -93,8 +92,9 @@ def get_track_number(ogg_file):
 # Sort .ogg files by track number (otherwise they will be sorted by filename)
 def sort_ogg_files_by_track_number(ogg_files):
     ogg_files_with_track = [(get_track_number(file), file) for file in ogg_files]
-    ogg_files_with_track.sort(key=lambda x: x[0])  # Sort by track number
+    ogg_files_with_track.sort(key=lambda x: int(x[0]))  # Sort by track number
     sorted_ogg_files = [file for _, file in ogg_files_with_track]
+    print(sorted_ogg_files)
     return sorted_ogg_files
 
 
@@ -239,7 +239,16 @@ def create_mod_files(mod_directory, mod_name, ogg_files):
             f.write("}\n")
 
     with open(mod_directory + f"/description.txt", "w") as f:
-        print("Initializing description.txt")
+        print("Creating description.txt")
+        f.write('[h2]Mod Author[/h2]\n')
+        f.write('[h2]Description[/h2]\n')
+        f.write('[h2]Compatibility[/h2]\n')
+        f.write('[h2]Track List[/h2]\n')
+        for ogg_file in ogg_files:
+            audio = OggVorbis(ogg_file)
+            root, _ = os.path.splitext(ogg_file)
+            f.write(f"{audio.get('TRACKNUMBER', [None])[0]} - {os.path.basename(root)}\n")
+        f.write('[h2]Credits[/h2]\n')
         f.write(f"Mod generated using the Stellaris Music Mod Maker by nop990")
 
     print(f"Created mod files in {mod_directory}")
