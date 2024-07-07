@@ -7,6 +7,8 @@ Author: nop990
 <figcaption>Credit: Marcela Laskoski on Unsplash</figcaption>
 </figure>
 
+<br/>
+
 > :radioactive: **This tool was made for fun in one night and may contain bugs. I humbly request that you do not use
 stolen music or illegally infringe copyright with this tool. :radioactive:**
 
