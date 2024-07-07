@@ -1,4 +1,4 @@
-# Stellaris Soundtrack Mod Maker
+# Stellaris Music Mod Maker
 
 Author: nop990
 
@@ -42,11 +42,11 @@ stolen music or illegally infringe copyright with this tool. :radioactive:**
 
 <img src="resources/readme/Music_Folder.png" width="800">
 
-### Download and use the Stellaris Soundtrack Mod Maker
+### Download and use the Stellaris Music Mod Maker
 
-1. Download the Stellaris Soundtrack Mod Maker from the [Releases]() page.
+1. Download the Stellaris Music Mod Maker from the [Releases]() page.
 2. Extract the contents of the zip file to a folder.
-3. Run the `StellarisSoundtrackModMaker.exe` file.
+3. Run the `SMMM.exe` file.
 4. Copy the path to the folder containing your music.
 5. Copy the path to the folder of your generated Stellaris mod. This is usually in your documents/Paradox
    Interactive/Stellaris/mod folder.
@@ -67,5 +67,5 @@ stolen music or illegally infringe copyright with this tool. :radioactive:**
     update it.
 
 <img src="resources/readme/Mod_Folder_After.png" width="800">
-
+<br/>
 <img src="resources/readme/Music_Player.png">

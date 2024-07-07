@@ -284,6 +284,7 @@ def deploy_mod(mod_directory, mod_name, ogg_files, audio_files, thumbnail):
 
 
 def main():
+    print("#### STELLARIS MUSIC MOD MAKER ####\n")
     music_directory = input("Enter Music Directory: ")
     mod_directory = input("Enter Mod Directory: ")
     mod_name = input("Enter Mod Name: ")
