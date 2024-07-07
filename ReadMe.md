@@ -70,6 +70,7 @@ stolen music or illegally infringe copyright with this tool. :radioactive:**
 10. Add the mod to your playset in the Stellaris launcher and test that everything works as expected.
 11. If you are publishing your mod, use the "Upload Mod" you used earlier and select your mod from the dropdown to
     update it.
+> **Please credit any artists whose music you use in your mod.**
 
 <img src="resources/readme/Mod_Folder_After.png" width="800">
 <br/>
