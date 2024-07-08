@@ -3,5 +3,6 @@
 build/
 dist/
 package/
+__pycache__
 
 !*.spec
