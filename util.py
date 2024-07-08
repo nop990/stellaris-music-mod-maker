@@ -19,10 +19,14 @@ def zip_dist():
     if not os.path.exists('package'):
         os.mkdir('package')
 
+    if not os.path.exists('dist/resources'):
+        os.makedirs('dist/resources')
+
     if os.path.exists(f"package/SMMM_{version}.zip"):
         os.remove(f"package/SMMM_{version}.zip")
 
     shutil.copy('resources/about.txt', 'dist/about.txt')
+    shutil.copy('resources/thumbnail.png', 'dist/resources/thumbnail.png')
     shutil.copy('ReadMe.md', 'dist/ReadMe.md')
     shutil.copy('LICENSE', 'dist/LICENSE')
     shutil.make_archive(f"package/SMMM_{version}", 'zip', 'dist')
