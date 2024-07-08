@@ -1,9 +1,7 @@
 import os
 import shutil
-
 from PIL import Image
 from mutagen.oggvorbis import OggVorbis
-
 from util import stop
 
 
@@ -55,6 +53,7 @@ def all_files_are_ogg(files):
         if ext.lower() not in ['.ogg']:
             return False
     return True
+
 
 # Get the track number from an .ogg file
 def get_track_number(ogg_file):
