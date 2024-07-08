@@ -1,10 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
+from PyInstaller.building.api import PYZ, EXE
+from PyInstaller.building.build_main import Analysis
+
+from util import version
 
 a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('resources', 'resources')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -21,7 +25,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='SMMM',
+    name=f'SMMM_{version}',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
