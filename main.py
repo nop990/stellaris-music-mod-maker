@@ -8,6 +8,7 @@ from mutagen.id3 import ID3, ID3NoHeaderError
 from mutagen.oggvorbis import OggVorbis
 from pydub import AudioSegment
 
+
 # Find .mp3, .wav, .flac, .ogg files in the given directory
 def find_audio_files(directory):
     audio_files = []
@@ -175,7 +176,11 @@ def clean_mod_files(mod_directory):
     if not os.path.exists(mod_directory):
         print("Please create mod first using the Stellaris Launcher. If you have, double check that you copied the "
               "directory path correctly.")
-        sys.exit()
+        stop()
+
+    if 'descriptor.mod' not in os.listdir(mod_directory):
+        print("descriptor.mod not found in mod directory. Please double check the mod path.")
+        stop()
 
     try:
         if os.listdir(mod_directory) != ['descriptor.mod']:
@@ -184,7 +189,7 @@ def clean_mod_files(mod_directory):
 
             if delete_confirmation.lower() == 'n':
                 print("Exiting...")
-                sys.exit()
+                stop()
 
             else:
                 for item in os.listdir(mod_directory):
@@ -210,7 +215,11 @@ def create_mod_files(mod_directory, mod_name, ogg_files):
     if not os.path.exists(mod_directory):
         print("Please create mod first using the Stellaris Launcher. If you have, double check that you copied the "
               "directory path correctly.")
-        sys.exit()
+        stop()
+
+    if 'descriptor.mod' not in os.listdir(mod_directory):
+        print("descriptor.mod not found in mod directory. Please double check the mod path.")
+        stop()
 
     os.makedirs(mod_directory + "/music", exist_ok=True)
     music_directory = os.path.join(mod_directory, "music")
@@ -259,7 +268,11 @@ def deploy_mod(mod_directory, mod_name, ogg_files, audio_files, thumbnail):
     if not os.path.exists(mod_directory):
         print("Please create mod first using the Stellaris Launcher. If you have, double check that you copied the "
               "directory path correctly.")
-        sys.exit()
+        stop()
+
+    if 'descriptor.mod' not in os.listdir(mod_directory):
+        print("descriptor.mod not found in mod directory. Please double check the mod path.")
+        stop()
 
     create_mod_files(mod_directory, mod_name, ogg_files)
 
@@ -317,6 +330,11 @@ def main():
 
     print("Mod deployed, opening in file explorer...")
     os.startfile(mod_directory)
+
+
+def stop():
+    sys.tracebacklimit = 1
+    raise ValueError("Exiting...")
 
 
 if __name__ == '__main__':
