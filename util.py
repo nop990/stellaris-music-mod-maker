@@ -4,7 +4,7 @@ import sys
 
 version = '1.1.0'
 
-
+# Creates a file with information about the program
 def create_about_file():
     with open("resources/about.txt", "w") as f:
         f.write(f"Stellaris Music Mod Maker v{version}\n")
@@ -14,6 +14,7 @@ def create_about_file():
     print("Created resources/about.txt")
 
 
+# Zips the dist folder
 def zip_dist():
     if not os.path.exists('package'):
         os.mkdir('package')
@@ -28,16 +29,17 @@ def zip_dist():
     print(f"Created dist/SMMM_{version}.zip")
 
 
+# Installs the program using PyInstaller
 def py_install():
     if os.path.exists('dist'):
         shutil.rmtree('dist')
 
     os.system(f"python -m PyInstaller main.spec")
-    # os.remove(f'dist/SMMM_{version}.exe')
 
     print("PyInstaller finished")
 
 
+# Deletes all files with the name '-smmm-copy.ogg' in the music directory
 def delete_smmm_copy_files(music_directory):
     if music_directory:
         for file in os.listdir(music_directory):
@@ -45,6 +47,7 @@ def delete_smmm_copy_files(music_directory):
                 os.remove(os.path.join(music_directory, file))
 
 
+# Stops the program without closing the console
 def stop():
     sys.tracebacklimit = 1
     raise ValueError("Exiting...")
