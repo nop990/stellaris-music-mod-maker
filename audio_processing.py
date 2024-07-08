@@ -26,7 +26,7 @@ def convert_to_ogg(audio_files, mod_name):
             print(f"Copied {os.path.basename(file_path)} to {os.path.basename(new_file_path)}")
 
 
-# Copy metadata from .mp3, .flac to .ogg. Create Metadata from .wav title
+# Copy metadata from .mp3, .flac to .ogg. Create metadata from .wav title
 def copy_metadata(old_file, new_file, mod_name):
     _, old_ext = os.path.splitext(old_file)
 
