@@ -2,6 +2,7 @@ import shutil
 from util import version
 
 
+# Makes the title look nice in the console
 def print_title():
     terminal_width = shutil.get_terminal_size().columns
     title = f"STELLARIS MUSIC MOD MAKER v{version}"
