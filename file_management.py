@@ -143,11 +143,11 @@ def create_mod_files(mod_directory, mod_name, ogg_files):
 
     os.makedirs(mod_directory + "/music", exist_ok=True)
     music_directory = os.path.join(mod_directory, "music")
-    mod_name = mod_name.replace(" ", "-")
+    mod_name_unspaced = mod_name.replace(" ", "-")
 
     # songlist.asset must have unique name to not overwrite existing game tracks
-    with open(music_directory + f"/songlist-{mod_name}.asset", "w") as f:
-        print(f"Creating songlist-{mod_name}.asset")
+    with open(music_directory + f"/songlist-{mod_name_unspaced}.asset", "w") as f:
+        print(f"Creating songlist-{mod_name_unspaced}.asset")
 
         for ogg_file in ogg_files:
             root, _ = os.path.splitext(ogg_file)
@@ -158,8 +158,8 @@ def create_mod_files(mod_directory, mod_name, ogg_files):
             f.write("}\n")
 
     # songlist.txt must have unique name to not overwrite existing game tracks
-    with open(music_directory + f"/songlist-{mod_name}.txt", "w") as f:
-        print(f"Creating songlist-{mod_name}.txt")
+    with open(music_directory + f"/songlist-{mod_name_unspaced}.txt", "w") as f:
+        print(f"Creating songlist-{mod_name_unspaced}.txt")
 
         for ogg_file in ogg_files:
             root, _ = os.path.splitext(ogg_file)
@@ -175,10 +175,10 @@ def create_mod_files(mod_directory, mod_name, ogg_files):
         f.write('[h2]Track List[/h2]\n')
         for ogg_file in ogg_files:
             audio = OggVorbis(ogg_file)
-            root, _ = os.path.splitext(ogg_file)
-            f.write(f"{audio.get('TRACKNUMBER', [None])[0]} - {os.path.basename(root)}\n")
+            title = audio.get('TITLE', [None])[0].replace(' - ' + mod_name, '')
+            f.write(f"{audio.get('TRACKNUMBER', [None])[0]} - {title}\n")
         f.write('[h2]Credits[/h2]\n')
-        f.write(f"Mod generated using the Stellaris Music Mod Maker by nop990")
+        f.write(f"Mod generated using the [url=https://github.com/nop990/stellaris-music-mod-maker]Stellaris Music Mod Maker[/url] by nop990")
 
     print(f"Created mod files in {mod_directory}")
 

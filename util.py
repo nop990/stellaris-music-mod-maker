@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 
-version = '1.1.1'
+version = '1.1.2'
 
 # Creates a file with information about the program
 def create_about_file():
